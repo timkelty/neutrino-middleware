@@ -1,7 +1,7 @@
 {
   "name": "neutrino-preset-web-ssr",
   "description": "Extension of neutrino-preset-web focussing on SSR applications",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "repository": "https://github.com/timkelty/neutrino-packages/tree/master/packages/neutrino-preset-web-ssr",
   "main": "index.js",
   "peerDependencies": {
