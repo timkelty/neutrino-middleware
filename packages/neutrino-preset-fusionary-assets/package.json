@@ -21,5 +21,8 @@
     "assets"
   ],
   "author": "Tim Kelty <timkelty@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "css-hot-loader": "^1.3.3"
+  }
 }
