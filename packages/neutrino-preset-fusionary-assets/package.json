@@ -11,6 +11,7 @@
     "img-loader": "^2.0.0",
     "lerna": "^2.5.1",
     "neutrino-middleware-eslint": "^7.3.1",
+    "neutrino-middleware-postcss": "^3.0.0",
     "neutrino-middleware-stylelint": "^3.0.0",
     "neutrino-preset-extractstyles": "^1.0.0-rc.1"
   },
