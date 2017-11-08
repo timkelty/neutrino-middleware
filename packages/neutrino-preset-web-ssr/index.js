@@ -9,6 +9,7 @@ module.exports = (neutrino, options = {}) => {
 
   options = Object.assign({
     cleanOnStart: true,
+    devServerProxy: process.env.DEV_SERVER_PROXY,
     baseUrl: `/${path.basename(neutrino.options.output)}/`,
   }, options);
 
@@ -25,6 +26,8 @@ module.exports = (neutrino, options = {}) => {
   }, options.web || {});
 
   neutrino.use('neutrino-preset-web', options.web);
+
+  // Ensure assets are in a predictable location on `start`
   neutrino.use('neutrino-middleware-image-loader', {
     svg: urlLoaderOptions,
     img: urlLoaderOptions,
