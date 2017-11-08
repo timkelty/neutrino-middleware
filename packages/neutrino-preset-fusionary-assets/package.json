@@ -1,7 +1,7 @@
 {
   "name": "neutrino-preset-fusionary-assets",
   "description": "Fusionary's asset handling preferences, as a Neutrino preset",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": "https://github.com/timkelty/neutrino-packages/tree/master/packages/neutrino-preset-fusionary-assets",
   "main": "index.js",
   "peerDependencies": {
