@@ -25,9 +25,8 @@ module.exports = (neutrino, options = {}) => {
   });
 
   // https://github.com/webpack-contrib/extract-text-webpack-plugin
-  neutrino.use('neutrino-preset-extractstyles', {
+  neutrino.use(require('./extract-styles.js'), {
     plugin: {
-      filename: isBuild ? '[name].[contenthash].css' : '[name].css',
       allChunks: true,
       ignoreOrder: true,
     }
