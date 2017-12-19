@@ -1,5 +1,7 @@
 const merge = require('deepmerge');
+const { join } = require('path');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const { lint } = require('stylelint');
 
 module.exports = (neutrino, opts = {}) => {
   const options = merge({
@@ -13,6 +15,17 @@ module.exports = (neutrino, opts = {}) => {
   const getStylelintRcConfig = config => config
     .plugin(options.pluginId)
     .get('args')[0].config || {};
+
+  neutrino.register(
+    'stylelint',
+    () => {
+      const { fix = false } = neutrino.options.args;
+      const files = join(options.context, options.files);
+
+      return lint(merge(options, { fix, files }));
+    },
+    'Perform a one-time lint using stylelint. Apply available automatic fixes with --fix'
+  );
 
   neutrino.register(
     'stylelintrc',
