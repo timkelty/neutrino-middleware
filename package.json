@@ -1,14 +1,21 @@
 {
 	"license": "MPL-2.0",
 	"devDependencies": {
-		"lerna": "^2.5.1"
+		"@fusionary/eslint-config": "^1.0.3",
+		"@neutrinojs/eslint": "^8.0.14",
+		"lerna": "^2.5.1",
+		"neutrino": "^8.0.13"
 	},
 	"private": true,
 	"workspaces": [
 		"packages/*"
 	],
 	"engines": {
-	  "node": ">=7.0.0",
-	  "yarn": "^1.2.1"
+		"node": ">=7.0.0",
+		"yarn": "^1.2.1"
+	},
+	"scripts": {
+		"build": "lerna run build",
+		"lint": "$(npm bin)/neutrino lint"
 	}
 }
