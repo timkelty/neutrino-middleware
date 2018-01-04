@@ -1,6 +1,6 @@
 {
   "name": "neutrino-middleware-critical-css",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Neutrino middleware for extracting and inlining critical css.",
   "main": "index.js",
   "keywords": [
