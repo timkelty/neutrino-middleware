@@ -26,7 +26,7 @@ module.exports = (neutrino, opts = {}) => {
         pluginId: `${options.pluginId}-${pluginId}`,
         inline: true,
         src: filename,
-        dest: filename,
+        dest: filename
       };
     }));
 
