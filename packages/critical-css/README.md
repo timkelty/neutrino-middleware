@@ -105,3 +105,9 @@ For all other options, see [Critical's options](https://github.com/addyosmani/cr
 
 By specifying `targets`, you can invoke Critical on multiple targets.
 Specified options will be merged with root level options and passed on to Critical.
+
+[npm-image]: https://img.shields.io/npm/v/neutrino-middleware-critical-css.svg
+[npm-downloads]: https://img.shields.io/npm/dt/neutrino-middleware-critical-css.svg
+[npm-url]: https://npmjs.org/package/neutrino-middleware-critical-css
+[spectrum-image]: https://withspectrum.github.io/badge/badge.svg
+[spectrum-url]: https://spectrum.chat/neutrino
