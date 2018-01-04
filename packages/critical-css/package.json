@@ -1,0 +1,26 @@
+{
+  "name": "neutrino-middleware-critical-css",
+  "version": "0.1.0",
+  "description": "Neutrino middleware for extracting and inlining critical css.",
+  "main": "index.js",
+  "keywords": [
+    "neutrino",
+    "neutrino-middleware",
+    "critical",
+    "styles",
+    "css"
+  ],
+  "author": "Tim Kelty <timkelty@gmail.com>",
+  "license": "MPL-2.0",
+  "repository": "https://github.com/timkelty/neutrino-middleware/tree/master/packages/critical-css",
+  "bugs": "https://github.com/timkelty/neutrino-middleware/issues",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "deepmerge": "^1.5.2"
+  },
+  "peerDependencies": {
+    "neutrino": "^8.0.0"
+  }
+}
