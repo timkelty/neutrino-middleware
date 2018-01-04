@@ -18,7 +18,8 @@
     "access": "public"
   },
   "dependencies": {
-    "deepmerge": "^1.5.2"
+    "deepmerge": "^2.0.1",
+    "html-critical-webpack-plugin": "^1.0.1"
   },
   "peerDependencies": {
     "neutrino": "^8.0.0"
