@@ -1,5 +1,5 @@
 const merge = require('deepmerge');
-const {omit} = require('ramda');
+const {omit, mapObjIndexed} = require('ramda');
 const HtmlCriticalPlugin = require('html-critical-webpack-plugin');
 
 module.exports = (neutrino, opts = {}) => {
@@ -8,41 +8,47 @@ module.exports = (neutrino, opts = {}) => {
     base: neutrino.options.output
   }, opts);
 
-  // Add html targets from @neutrinojs/web
-  if (!options.src && !options.html && !options.targets) {
-    Object.assign(options, {
-      targets: Object.keys(neutrino.config.plugins.entries())
-        .filter(pluginId => pluginId.startsWith('html-'))
-        .map(pluginId => {
-          const filename = neutrino.config.plugin(pluginId).get('args')[0].filename;
+  const targets = [];
 
-          return {
-            inline: true,
-            src: filename,
-            dest: filename,
-            pluginId: `${options.pluginId}-${pluginId}`
-          };
-        })
-    });
+  // Add targets from root options
+  if (options.src || options.html) {
+    targets.push(options);
+
+  // Add targets from @neutrinojs/web
+  } else if (!options.targets) {
+    const htmlPluginIds = Object.keys(neutrino.config.plugins.entries())
+      .filter(pluginId => pluginId.startsWith('html-'));
+
+    targets.push(...htmlPluginIds.map(pluginId => {
+      const filename = neutrino.config.plugin(pluginId).get('args')[0].filename;
+
+      return {
+        pluginId: `${options.pluginId}-${pluginId}`,
+        inline: true,
+        src: filename,
+        dest: filename,
+      };
+    }));
+
+  // Add targets from options.targets
+  } else {
+    targets.push(...Object.values(mapObjIndexed((target, pluginId) => {
+      const targetOptions = typeof target === 'string' ? {
+        src: target,
+        dest: target
+      } : target;
+
+      return Object.assign(targetOptions, {
+        pluginId: `${options.pluginId}-${pluginId}`,
+      });
+    }, options.targets)));
   }
 
-  const targets = (options.targets || [options])
-    .map((target, index) => {
-      if (!target.pluginId && index > 0) {
-        Object.assign(target, {
-          pluginId: `${options.pluginId}-${index}`
-        });
-      }
+  targets.forEach(target => {
+    const pluginOptions = omit(['pluginId', 'targets'], merge(options, target));
 
-      return merge(
-        omit('targets', options),
-        target
-      );
-    });
-
-  targets.forEach((target, index) => {
     neutrino.config
       .plugin(target.pluginId)
-      .use(HtmlCriticalPlugin, [omit('pluginId', target)]);
+      .use(HtmlCriticalPlugin, [pluginOptions]);
   });
 };
