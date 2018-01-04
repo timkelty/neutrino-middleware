@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "deepmerge": "^2.0.1",
-    "html-critical-webpack-plugin": "^1.0.1"
+    "html-critical-webpack-plugin": "^1.0.1",
+    "ramda": "^0.25.0"
   },
   "peerDependencies": {
     "neutrino": "^8.0.0"
